@@ -22,7 +22,6 @@
  * - dotenv: Environment variables
  * - express-rate-limit: Rate limiting
  * - cors: Cross-Origin Resource Sharing
- * 
  */
 
 require("dotenv").config();
@@ -57,16 +56,8 @@ app.use((req, res, next) => {
   console.log(`${req.method} ${req.path}`);
   next();
 });
-
-// Handle React routing, return all requests to React app
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "../FrontEnd/build", "index.html"));
-// });
 // Request logging middleware
-app.use((req, res, next) => {
-  console.log(`${req.method} ${req.path}`);
-  next();
-});
+
 
 // Rate limiter for password reset requests
 const resetLimiter = rateLimit({
@@ -787,7 +778,7 @@ async function initializeServices() {
       console.log("All services initialized successfully");
     });
   } catch (err) {
-    console.error("Service initialization failed:", err);
+    console.error("Service initialization failed:", err.message);
     process.exit(1);
   }
 }
