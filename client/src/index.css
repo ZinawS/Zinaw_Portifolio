@@ -1,0 +1,63 @@
+/* Import Tailwind CSS base, components, and utilities */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom animations for UI elements */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Animation classes for reuse */
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.animate-fade-in-text {
+  animation: fadeInText 0.3s ease-out forwards;
+}
+
+.animate-blink {
+  animation: blink 0.7s step-end infinite;
+}
+
+/* Alert styles for user feedback */
+.alert-success {
+  background-color: #f0fdf4;
+  border-left: 4px solid #10b981;
+  color: #065f46;
+  padding: 1rem;
+}
+
+.alert-error {
+  background-color: #fef2f2;
+  border-left: 4px solid #ef4444;
+  color: #991b1b;
+  padding: 1rem;
+}
+/* body{
+  background-color: green;
+} */
