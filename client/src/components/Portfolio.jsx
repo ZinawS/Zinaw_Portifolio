@@ -2,11 +2,17 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaExternalLinkAlt, FaTimes } from "react-icons/fa";
 
+/**
+ * Portfolio Component
+ * This component displays a portfolio section with filterable and searchable
+ * project items, featuring animations with Framer Motion and a modal for
+ * detailed project views. It includes a custom Tailwind animation for filters.
+ */
 function Portfolio() {
   // State for filter, search, and modal
-  const [filter, setFilter] = useState("all");
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [filter, setFilter] = useState("all"); // State to manage filter category
+  const [searchTerm, setSearchTerm] = useState(""); // State to manage search term
+  const [selectedProject, setSelectedProject] = useState(null); // State to manage selected project for modal
 
   // Portfolio items data with additional details
   const portfolioItems = [
@@ -57,8 +63,15 @@ function Portfolio() {
       description:
         "Recreated Amazon’s homepage with responsive design using React and  CSS, featuring dynamic video thumbnails.",
       image: "/img/projects/Amazon.png",
-      link: "https://youtube1982.netlify.app/",
-      technologies: ["HTML5", "CSS3", "React","NodeJS","Firebase","Stripe.js"],
+      link: "https://amazon-fronend-deployment.netlify.app/",
+      technologies: [
+        "HTML5",
+        "CSS3",
+        "React",
+        "NodeJS",
+        "Firebase",
+        "Stripe.js",
+      ],
     },
     {
       id: 6,
@@ -68,7 +81,7 @@ function Portfolio() {
         "Recreated customer’s homepage with responsive design using Javascript and CSS, featuring dynamic video thumbnails.",
       image: "/img/projects/Melkahiwot.png",
       link: "https://www.melkahiwot.com/",
-      technologies: ["HTML5", "CSS3", "JavaScript","NodeJS","Stripe.js"],
+      technologies: ["HTML5", "CSS3", "JavaScript", "NodeJS", "Stripe.js"],
     },
     {
       id: 7,
@@ -82,25 +95,42 @@ function Portfolio() {
         "Aviation Systems",
         "EASA Compliance",
       ],
-      caseStudy: "/case-studies/b767-cargo-conversion", // Optional: link to detailed write-up
+      // caseStudy: "/case-studies/b767-cargo-conversion", // Optional: link to detailed write-up
       featured: true,
+    },
+    {
+      id: 8,
+      category: "web",
+      title: "Evangadi Forum",
+      description:
+        "The Evangadi Forum platform with a responsive design using React, Node.js, and MySQL/PostgreSQL. Features include user authentication, question and answer threads, and a clean UI.",
+      image: "/img/projects/Evanadi_Forum.png",
+      link: "https://evangadi-forum-d2024.netlify.app/",
+      technologies: [
+        "HTML5",
+        "CSS3",
+        "React",
+        "Node.js",
+        "Express",
+        "MySQL/PostgreSQL",
+      ],
     },
   ];
 
   // Filter and search items
   const filteredItems = portfolioItems
-    .filter((item) => filter === "all" || item.category === filter)
+    .filter((item) => filter === "all" || item.category === filter) // Filter by category
     .filter(
       (item) =>
-        item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.description.toLowerCase().includes(searchTerm.toLowerCase())
+        item.title.toLowerCase().includes(searchTerm.toLowerCase()) || // Filter by title
+        item.description.toLowerCase().includes(searchTerm.toLowerCase()) // Filter by description
     );
 
   // Animation variants for cards
   const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-    exit: { opacity: 0, y: -20, transition: { duration: 0.3 } },
+    hidden: { opacity: 0, y: 20 }, // Initial state
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }, // Visible state with transition
+    exit: { opacity: 0, y: -20, transition: { duration: 0.3 } }, // Exit state with transition
   };
 
   return (

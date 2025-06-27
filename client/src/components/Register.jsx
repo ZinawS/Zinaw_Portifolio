@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { baseURL } from "../Utility/Api";
+// import { baseURL } from "../Utility/Api";
 
 function Register() {
   // State for error message

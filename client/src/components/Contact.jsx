@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 // import { baseURL } from "../Utility/Api";
 
 function Contact() {
+  const [isSubmitting, setIsSubmitting] = useState(false); // Track submission state
+
   // Handle contact form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Disable button
+    setIsSubmitting(true);
+
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
 
@@ -19,37 +25,42 @@ function Contact() {
           alert("Message sent successfully!");
           e.target.reset();
         } else {
-          alert(data.error);
+          alert(data.error || "Failed to send message.");
         }
       })
-      .catch((err) => console.error("Submit contact error:", err));
+      .catch((err) => {
+        console.error("Submit contact error:", err);
+        alert("An unexpected error occurred.");
+      })
+      .finally(() => {
+        setIsSubmitting(false); // Re-enable button
+      });
   };
 
   return (
     <section id="contact" className="py-16 bg-gray-100">
       <div className="container mx-auto px-4">
         {/* Section title */}
-        <h2 className="text-3xl font-bold text-center mb-8">Contact Me</h2>
+        <h2 className="text-3xl font-bold text-center mb-4">Contact Me</h2>
+
         {/* Contact info */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mb-4">
           <div className="text-center">
-            <i className="fas fa-phone fa-3x text-blue-600 mb-4"></i>
+            <i className="fas fa-phone fa-3x text-blue-600 mb-2"></i>
             <p className="font-semibold">+1 240-425-2343</p>
-            <p>Phone</p>
           </div>
           <div className="text-center">
-            <i className="far fa-envelope fa-3x text-blue-600 mb-4"></i>
+            <i className="far fa-envelope fa-3x text-blue-600 mb-2"></i>
             <p className="font-semibold">
               <a href="mailto:zinshol@hotmail.com">zinshol@hotmail.com</a>
             </p>
-            <p>Email</p>
           </div>
           <div className="text-center">
-            <i className="fas fa-map-marker-alt fa-3x text-blue-600 mb-4"></i>
+            <i className="fas fa-map-marker-alt fa-3x text-blue-600 mb-2"></i>
             <p className="font-semibold">Maryland, USA</p>
-            <p>Address</p>
           </div>
         </div>
+
         {/* Contact form */}
         <div className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow">
           <form onSubmit={handleSubmit}>
@@ -85,9 +96,10 @@ function Contact() {
             ></textarea>
             <button
               type="submit"
-              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50"
+              disabled={isSubmitting}
             >
-              Send Message
+              {isSubmitting ? "Sending..." : "Send Message"}
             </button>
           </form>
         </div>

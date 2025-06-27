@@ -1,20 +1,23 @@
+// Importing core React modules and utilities
 import React, { useState, useEffect, lazy, Suspense } from "react";
-import {
-  Routes,
-  Route,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
+import { Routes, Route, useNavigate, useParams } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+
+
+// Importing shared components
 import NavBar from "./components/NavBar";
 import AuthForm from "./components/AuthForm";
 import PasswordReset from "./components/PasswordReset";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ErrorBoundary from "./components/ErrorBoundary";
+import Resume from "./pages/Resume";
+import Home from "./pages/Home";
+// import { baseURL } from "./Utility/Api";
 
-const Home = lazy(() => import("./components/Home"));
+// Lazy-loaded route components for performance optimization
+// const Home = lazy(() => import("./components/Home"));
 const About = lazy(() => import("./components/About"));
-const Resume = lazy(() => import("./components/Resume"));
+// const Resume = lazy(() => import("./components/Resume"));
 const Services = lazy(() => import("./components/Services"));
 const Portfolio = lazy(() => import("./components/Portfolio"));
 const Recommendations = lazy(() => import("./components/Recommendations"));
@@ -22,67 +25,44 @@ const Contact = lazy(() => import("./components/Contact"));
 const Blog = lazy(() => import("./components/Blog"));
 const AdminDashboard = lazy(() => import("./components/AdminDashboard"));
 
-// Wrapper component for password reset route
+// Component to handle reset password token validation
 function PasswordResetWrapper() {
   const { token } = useParams();
   const navigate = useNavigate();
   const [resetToken, setResetToken] = useState(null);
   const [tokenValid, setTokenValid] = useState(null);
 
+  // Run validation when component mounts or token changes
   useEffect(() => {
-    console.log("PasswordResetWrapper: Validating token:", token);
     if (!token) {
-      console.log("No token provided in URL");
-      setResetToken(null);
       setTokenValid(false);
-      navigate("/login", {
+      return navigate("/login", {
         replace: true,
         state: { error: "No reset token provided" },
       });
-      return;
     }
 
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => {
-      controller.abort();
-      console.log("Token validation timed out for token:", token);
-    }, 5000);
+    const timeoutId = setTimeout(() => controller.abort(), 5000);
 
     async function validateToken() {
       try {
-        const response = await fetch(
-          `http://localhost:3000/api/password-reset/${token}`,
-          {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-            signal: controller.signal,
-          }
-        );
-        clearTimeout(timeoutId);
-        console.log("Fetch response status:", response.status);
+        const response = await fetch(`/api/password-reset/${token}`, {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+          signal: controller.signal,
+        });
 
+        clearTimeout(timeoutId);
         const data = await response.json();
-        console.log("Token validation response:", data);
 
         if (data.valid) {
           setResetToken(token);
           setTokenValid(true);
         } else {
-          setResetToken(null);
-          setTokenValid(false);
-          navigate("/login", {
-            replace: true,
-            state: { error: data.error || "Invalid or expired reset token" },
-          });
+          throw new Error(data.error || "Invalid or expired reset token");
         }
       } catch (err) {
-        console.error(
-          "Token validation error for token:",
-          token,
-          "Error:",
-          err.message,
-          err.stack
-        );
         clearTimeout(timeoutId);
         setResetToken(null);
         setTokenValid(false);
@@ -92,7 +72,7 @@ function PasswordResetWrapper() {
             error:
               err.name === "AbortError"
                 ? "Token validation timed out"
-                : "Failed to validate reset token",
+                : err.message,
           },
         });
       }
@@ -101,54 +81,61 @@ function PasswordResetWrapper() {
     validateToken();
   }, [token, navigate]);
 
-  return (
-    <div>
-      {tokenValid === true ? (
-        <PasswordReset resetToken={resetToken} setResetToken={setResetToken} />
-      ) : tokenValid === false ? (
-        <div className="text-center py-20">
-          <h1 className="text-2xl font-bold">Invalid Reset Token</h1>
-          <p className="mt-4">
-            The password reset link is invalid or has expired.
-          </p>
+  // Render based on validation state
+  if (tokenValid === true) {
+    return (
+      <PasswordReset resetToken={resetToken} setResetToken={setResetToken} />
+    );
+  } else if (tokenValid === false) {
+    return (
+      <div className="text-center py-20">
+        <h1 className="text-2xl font-bold">Invalid Reset Token</h1>
+        <p className="mt-4">
+          The password reset link is invalid or has expired.
+        </p>
+        <button
+          onClick={() => navigate("/login")}
+          className="mt-4 text-blue-600 hover:text-blue-800"
+        >
+          Back to Login
+        </button>
+      </div>
+    );
+  } else {
+    return (
+      <div className="text-center py-20">
+        Validating token...
+        <p className="mt-4 text-gray-600">
+          If this takes too long,{" "}
           <button
             onClick={() => navigate("/login")}
-            className="mt-4 text-blue-600 hover:text-blue-800"
+            className="text-blue-600 hover:text-blue-800"
           >
-            Back to Login
+            return to login
           </button>
-        </div>
-      ) : (
-        <div className="text-center py-20">
-          Validating token...
-          <p className="mt-4 text-gray-600">
-            If this takes too long,{" "}
-            <button
-              onClick={() => navigate("/login")}
-              className="text-blue-600 hover:text-blue-800"
-            >
-              return to login
-            </button>
-            .
-          </p>
-        </div>
-      )}
-    </div>
-  );
+          .
+        </p>
+      </div>
+    );
+  }
 }
 
+// Main App component
 function App() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
-
+   
+  // Initialize user session based on token
   useEffect(() => {
     const initializeUser = async () => {
       const storedToken = localStorage.getItem("token");
+
       if (storedToken) {
         try {
           const decoded = jwtDecode(storedToken);
           const currentTime = Date.now() / 1000;
+
           if (decoded.exp > currentTime) {
             if (decoded.id && decoded.email && decoded.role) {
               setUser(decoded);
@@ -166,7 +153,7 @@ function App() {
             localStorage.removeItem("token");
             navigate("/login", { replace: true });
           }
-        } catch (err) {
+        } catch {
           localStorage.removeItem("token");
           navigate("/login", { replace: true });
         }
@@ -177,16 +164,19 @@ function App() {
     initializeUser();
   }, [navigate]);
 
+  // Handle logout and redirect to homepage
   const handleLogout = () => {
     localStorage.removeItem("token");
     setUser(null);
     navigate("/", { replace: true });
   };
 
+  // Show loading spinner until initialization completes
   if (isLoading) {
     return <div className="text-center py-20">Loading...</div>;
   }
 
+  // Return the full app layout with routing and navigation
   return (
     <div className="font-poppins text-gray-800">
       <NavBar user={user} onLogout={handleLogout} />
@@ -195,108 +185,126 @@ function App() {
           fallback={<div className="text-center py-20">Loading...</div>}
         >
           <Routes>
+            {/* Public Routes */}
             <Route
               path="/"
               element={
-                <ErrorBoundary route={window.location.pathname}>
-                  <Home />
+                <ErrorBoundary route="/">
+                  {" "}
+                  <Home />{" "}
                 </ErrorBoundary>
               }
             />
             <Route
               path="/about"
               element={
-                <ErrorBoundary route={window.location.pathname}>
-                  <About />
+                <ErrorBoundary route="/about">
+                  {" "}
+                  <About />{" "}
                 </ErrorBoundary>
               }
             />
             <Route
               path="/resume"
               element={
-                <ErrorBoundary route={window.location.pathname}>
-                  <Resume />
+                <ErrorBoundary route="/resume">
+                  {" "}
+                  <Resume />{" "}
                 </ErrorBoundary>
               }
             />
             <Route
               path="/services"
               element={
-                <ErrorBoundary route={window.location.pathname}>
-                  <Services />
+                <ErrorBoundary route="/services">
+                  {" "}
+                  <Services />{" "}
                 </ErrorBoundary>
               }
             />
             <Route
               path="/portfolio"
               element={
-                <ErrorBoundary route={window.location.pathname}>
-                  <Portfolio />
+                <ErrorBoundary route="/portfolio">
+                  {" "}
+                  <Portfolio />{" "}
                 </ErrorBoundary>
               }
             />
             <Route
               path="/recommendations"
               element={
-                <ErrorBoundary route={window.location.pathname}>
-                  <Recommendations />
+                <ErrorBoundary route="/recommendations">
+                  {" "}
+                  <Recommendations />{" "}
                 </ErrorBoundary>
               }
             />
             <Route
               path="/contact"
               element={
-                <ErrorBoundary route={window.location.pathname}>
-                  <Contact />
+                <ErrorBoundary route="/contact">
+                  {" "}
+                  <Contact />{" "}
                 </ErrorBoundary>
               }
             />
             <Route
               path="/blog"
               element={
-                <ErrorBoundary route={window.location.pathname}>
-                  <Blog />
+                <ErrorBoundary route="/blog">
+                  {" "}
+                  <Blog />{" "}
                 </ErrorBoundary>
               }
             />
+
+            {/* Auth Routes */}
             <Route
               path="/login"
               element={
-                <ErrorBoundary route={window.location.pathname}>
-                  <AuthForm setUser={setUser} />
+                <ErrorBoundary route="/login">
+                  {" "}
+                  <AuthForm setUser={setUser} />{" "}
                 </ErrorBoundary>
               }
             />
             <Route
               path="/register"
               element={
-                <ErrorBoundary route={window.location.pathname}>
-                  <AuthForm setUser={setUser} />
+                <ErrorBoundary route="/register">
+                  {" "}
+                  <AuthForm setUser={setUser} />{" "}
                 </ErrorBoundary>
               }
             />
             <Route
               path="/reset-password/:token"
               element={
-                <ErrorBoundary route={window.location.pathname}>
-                  <PasswordResetWrapper />
+                <ErrorBoundary route="/reset-password">
+                  {" "}
+                  <PasswordResetWrapper />{" "}
                 </ErrorBoundary>
               }
             />
+
+            {/* Protected Admin Route */}
             <Route
               path="/admin"
               element={
-                <ErrorBoundary route={window.location.pathname}>
+                <ErrorBoundary route="/admin">
                   <ProtectedRoute user={user}>
                     <AdminDashboard />
                   </ProtectedRoute>
                 </ErrorBoundary>
               }
             />
+
+            {/* 404 Fallback Route */}
             <Route
               path="*"
               element={
-                <ErrorBoundary route={window.location.pathname}>
+                <ErrorBoundary route="*">
                   <div className="text-center py-20">
                     <h1 className="text-2xl font-bold">404 - Page Not Found</h1>
                     <p className="mt-4">
@@ -313,4 +321,4 @@ function App() {
   );
 }
 
-export default App
+export default App;

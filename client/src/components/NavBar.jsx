@@ -1,6 +1,6 @@
 /* Imports for React, Router, and PropTypes */
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
 function NavBar({ user, onLogout }) {
@@ -8,6 +8,7 @@ function NavBar({ user, onLogout }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   // Get current route to handle smooth scrolling on home page
   const location = useLocation();
+  const navigate =useNavigate()
 
   // Handle navigation clicks for smooth scrolling on home page
   const handleNavClick = (e, sectionId) => {
@@ -19,6 +20,7 @@ function NavBar({ user, onLogout }) {
         setIsMobileMenuOpen(false); // Close mobile menu
       }
     }
+    navigate("/resume")
   };
 
   return (

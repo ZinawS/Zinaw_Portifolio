@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 function Resume() {
   // State for toggling between Aviation and IT resume
-  const [isAviation, setIsAviation] = useState(true);
+  const [isAviation, setIsAviation] = useState(false);
   // State for toggling "See More" for each experience
   const [expandedSections, setExpandedSections] = useState({});
 
@@ -19,7 +19,7 @@ function Resume() {
     name: "ZINAW SHIFERAW MEKONNEN",
     phone: "+1 240-425-2343, +1 240-482-6848",
     email: "Zinshol@hotmail.com",
-    linkedIn: "https://www.linkedin.com/in/zinaw-shiferaw-mekonnen-799a0934", // Replace with actual LinkedIn URL
+    linkedIn: "https://www.linkedin.com/in/zinaw-shiferaw-mekonnen-799a0934",
     website: "https://www.zesky.net",
     github: "https://github.com/ZinawS",
     location: "Silver Spring, MD, USA",
@@ -29,108 +29,106 @@ function Resume() {
   // IT resume data
   const itResume = {
     summary:
-      "Full-Stack Developer and IT Consultant with expertise in SERN stack (SQL, Express.js, React, Node.js) and broad experience in web development, automation, and system integration. Brings 16+ years of multi-industry experience, recently focused on full-stack application development, cloud deployment, and backend API design. Strong command of software engineering principles, with working knowledge of legacy and modern programming languages including Java, Python, C++, and jQuery.",
+      "Full-Stack Developer and IT Consultant with deep expertise in the MERN stack (MongoDB, Express.js, React, Node.js) and a broad foundation in web development, workflow automation, and enterprise system integration. Backed by over 16 years of multi-industry experience—including aviation, logistics, and technology sectors—recently specializing in full-stack application architecture, cloud deployment (AWS, Vercel), and backend API design. Brings strong command of software engineering principles, version control (Git), and both legacy and modern languages including Java, Python, C++, and jQuery, enabling seamless integration across legacy and cloud-native environments.",
     competencies: [
-      "Full-stack Web Development (React, Node.js, Express, jQuery)",
+      "Full-Stack Web Development (React, Node.js, Express, jQuery)",
       "Object-Oriented Programming (Java, C++, Python)",
-      "RESTful API & Backend Integration",
-      "Database Design (MySQL, MongoDB, PostgreSQL)",
-      "UI/UX & Responsive Design",
-      "Payment Gateway Integration (Stripe)",
-      "Agile/Scrum Project Delivery",
-      "Technical Documentation & Client Communication",
-      "IT Solutions for Aviation (ERP integration, automation, digital records)",
+      "RESTful API Architecture & Backend Integration",
+      "Database Design & Optimization (MySQL, MongoDB, PostgreSQL)",
+      "UI/UX Principles & Mobile-Responsive Design",
+      "Third-Party Integration (Stripe, OAuth, Firebase)",
+      "Agile/Scrum Methodologies & Project Delivery",
+      "Technical Documentation & Stakeholder Communication",
+      "Aviation IT Solutions (ERP/MRO integration, automation, digital records)",
     ],
+
     techStack: {
       frontend: [
         "HTML5",
         "CSS3",
         "Bootstrap",
-        "Tailwind",
-        "JavaScript ES6+",
-        "React",
+        "Tailwind CSS",
+        "JavaScript (ES6+)",
+        "React.js",
         "jQuery",
       ],
-      backend: ["Node.js", "Express.js", "REST APIs", "Java", "Python", "C++"],
-      database: ["MongoDB", "MySQL", "PostgreSQL", "Firebase"],
+      backend: [
+        "Node.js",
+        "Express.js",
+        "Java",
+        "Python",
+        "C++",
+        "RESTful APIs",
+      ],
+      database: [
+        "MongoDB",
+        "MySQL",
+        "PostgreSQL",
+        "Firebase (Realtime DB & Auth)",
+      ],
       tools: [
-        "Git/GitHub",
+        "Git & GitHub",
         "Postman",
         "VS Code",
         "Netlify",
         "GitHub Actions",
-        "Figma",
+        "Figma (Design Collaboration)",
       ],
       others: [
-        "Agile Methodologies",
-        "CI/CD",
-        "JSON",
-        "XML",
-        "UI Testing",
-        "Cross-Browser Compatibility",
-        "Cybersecurity Basics",
+        "Agile Workflows (Scrum/Kanban)",
+        "CI/CD Pipelines",
+        "JSON & XML Data Handling",
+        "Cross-Browser Compatibility Testing",
+        "UI Testing & Debugging",
+        "Basic Cybersecurity Practices",
       ],
     },
+
     experience: [
       {
-        title: "Full-Stack Web Developer",
+        title: "Senior Full-Stack Developer & IT Consultant",
         company: "Freelance + Aviation Consultant, Silver Spring, MD",
         period: "Oct 2024 – Present",
         achievements: [
-          "Delivered several web applications using React, Node.js, jQuery, and MongoDB",
+          "Developed full-stack web applications using React, TypeScript, Node.js, Express, and PostgreSQL, deployed on AWS EC2 with Docker, improving development speed by 30% via ChatGPT/Copilot.",
           "Built and deployed customer websites, e-commerce UIs, and portfolio demos",
+          "Contributed to open-source projects on GitHub, implementing Jest test suites and GitHub Actions for CI/CD.",
           "Integrated payment systems like Stripe, and implemented RESTful backend services",
           "Shared tutorials, contributed to open-source projects, and advised clients on MRO/CAMO IT system needs",
         ],
-        projects: [
-          "zesky.net – Personal full-stack developer portfolio",
-          "Apple Clone – Rebuilt Apple.com interface with React & Bootstrap",
-          "Netflix Clone – Developed dynamic content UI with genre navigation",
-          "Amazon Clone – Designed and developed a full-stack application with dynamic content",
-          "Stripe Integration Site – Full-stack billing site with secure payment APIs",
-          "Job Tracker – Responsive app using Tailwind CSS, jQuery, and vanilla JS",
-        ],
+        // projects: [],
       },
       {
-        title: "Senior Manager, Maintenance Planning",
+        title: "Senior Manager, Maintenance Planning & IT Solutions",
         company: "Jazeera Airways, Kuwait City, Kuwait",
         period: "Oct 2023 – Oct 2024",
         achievements: [
-          "Developed internal IT tools to digitize maintenance workflows",
-          "Created automated light/base check generation tools integrated with ERP",
+          "Developed internal IT tools to digitize maintenance workflows.",
+          "Engineered maintenance tracking dashboard with JavaScript, MySQL, Python, reducing unscheduled maintenance by 15% and increasing aircraft availability by 12%.",
+          "Developed automated maintenance tracker integrated with OASES ERP, cutting planning time from 3 days to 1 hour using JavaScript.",
+          "Led OASES-to-AMOS ERP transition, validating data with Python and ChatGPT-optimized scripts.",
+          "Deployed Skywise analytics dashboards with JavaScript/MySQL, improving dispatch reliability by 10%.",
           "Used agile practices to enhance cross-functional planning efficiency",
         ],
       },
       {
-        title: "Senior Manager, Lease Management",
+        title: "Senior Manager, Maintenance Planning & IT Solutions",
         company: "Etihad Airways, Abu Dhabi, UAE",
         period: "Feb 2023 – Aug 2023",
         achievements: [
-          "Managed lease transitions with custom-built tracking and asset tools",
-          "Integrated technical lease data into enterprise systems",
+          "Built project status tracking system with JavaScript, Excel, and VBA, enabling redelivery of 7 aircraft.",
+          "Implemented flyDocs for digital records, optimizing data with MySQL, improving process efficiency by 20%.",
         ],
       },
       {
-        title: "Director, Engineering & CAMO",
+        title: "Director, Engineering & Planning",
         company: "Ethiopian Airlines, Addis Ababa, Ethiopia",
         period: "Jan 2019 – Feb 2023",
         achievements: [
-          "Led development of digital task card systems and automated reporting",
+          "Spearheaded paperless maintenance project, deploying tablet-based workflows with JavaScript, MySQL, React, reducing paper usage and boosting sustainability.",
+          "Developed SharePoint portal with JavaScript, HTML5, CSS, improving team collaboration by 20%.",
+          "Upgraded airworthiness tracking system with Python/JavaScript, boosting compliance by 5%.",
           "Implemented Wi-Fi retrofit solutions with backend data validation tools",
-        ],
-      },
-      {
-        title: "Manager, Lease Management & EIS",
-        company: "Ethiopian Airlines, Addis Ababa, Ethiopia",
-        period: "Aug 2013 – Dec 2018",
-        achievements: ["Delivered A350/B787 records digitally"],
-      },
-      {
-        title: "Avionics Systems Engineer",
-        company: "Ethiopian Airlines, Addis Ababa, Ethiopia",
-        period: "Aug 2008 – Nov 2012",
-        achievements: [
-          "Maintained aircraft systems and developed diagnostic tools",
         ],
       },
     ],
@@ -176,7 +174,7 @@ function Resume() {
           "Implemented rapid rectification plans for TLDL items",
           "Collaborated with Production Planning and MROs for smooth operations",
           "Managed maintenance costs and turnaround time without compromising quality",
-          "Developed systems for light checks, base checks, and EOL checks",
+          "宅Developed systems for light checks, base checks, and EOL checks",
           "Enhanced the technical procedure handbook (TPH)",
           "Mitigated human factor issues with comprehensive checklists",
           "Facilitated integration of new aircraft into maintenance programs",
@@ -362,7 +360,7 @@ function Resume() {
   return (
     <section
       id="resume"
-      className="py-8 bg-gradient-to-b from-gray-100 to-gray-200"
+      className="py-8 bg-gradient-to-b from-gray-100 to-gray-200 font-poppins text-gray-800 min-h-screen"
     >
       <div className="container mx-auto px-4 max-w-5xl">
         {/* Section title */}
@@ -430,30 +428,33 @@ function Resume() {
         <div className="flex justify-center space-x-6 mb-10">
           <button
             className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
-              isAviation
-                ? "bg-blue-600 text-white shadow-lg"
-                : "bg-gray-300 text-gray-700 hover:bg-gray-400"
-            }`}
-            onClick={() => setIsAviation(true)}
-          >
-            Aviation Resume
-          </button>
-          <button
-            className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
               !isAviation
                 ? "bg-blue-600 text-white shadow-lg"
                 : "bg-gray-300 text-gray-700 hover:bg-gray-400"
             }`}
             onClick={() => setIsAviation(false)}
+            aria-label="View IT Resume"
           >
             IT Resume
           </button>
+          <button
+            className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+              isAviation
+                ? "bg-blue-600 text-white shadow-lg"
+                : "bg-gray-300 text-gray-700 hover:bg-gray-400"
+            }`}
+            onClick={() => setIsAviation(true)}
+            aria-label="View Aviation Resume"
+          >
+            Aviation Resume
+          </button>
+
           <a
             href={
               isAviation
                 ? "/documents/Resume_Zinaw Mekonnen_Av.pdf"
                 : "/documents/Resume_Zinaw Mekonnen_IT.pdf"
-            } // Replace with actual PDF paths
+            }
             download
             className="px-6 py-3 rounded-lg bg-green-600 text-white font-semibold hover:bg-green-700 transition-colors shadow-lg"
           >
@@ -475,24 +476,58 @@ function Resume() {
               <h3 className="text-2xl font-bold mb-6 text-blue-800 border-b-2 border-blue-300 pb-2">
                 Core Competencies
               </h3>
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                {aviationResume.competencies.map((item, index) => (
-                  <li key={index} className="flex items-center text-gray-700">
-                    <span className="mr-2 text-blue-500">✔</span> {item}
-                  </li>
-                ))}
-              </ul>
+
+              {/* Toggle Button */}
+              <button
+                className="px-4 py-2 mb-4 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors"
+                onClick={() => toggleSection("coreCompetencies")}
+                aria-expanded={!!expandedSections["coreCompetencies"]}
+                aria-controls="core-competencies-list"
+              >
+                {expandedSections["coreCompetencies"] ? "See Less" : "See More"}
+              </button>
+
+              {/* Collapsible Section */}
+              {expandedSections["coreCompetencies"] && (
+                <ul
+                  id="core-competencies-list"
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8"
+                >
+                  {aviationResume.competencies.map((item, index) => (
+                    <li key={index} className="flex items-center text-gray-700">
+                      <span className="mr-2 text-blue-500">✔</span> {item}
+                    </li>
+                  ))}
+                </ul>
+              )}
 
               <h3 className="text-2xl font-bold mb-6 text-blue-800 border-b-2 border-blue-300 pb-2">
                 Technical Skills
               </h3>
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                {aviationResume.technicalSkills.map((item, index) => (
-                  <li key={index} className="flex items-center text-gray-700">
-                    <span className="mr-2 text-blue-500">✔</span> {item}
-                  </li>
-                ))}
-              </ul>
+
+              {/* Toggle Button for the entire section */}
+              <button
+                className="px-4 py-2 mb-4 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors"
+                onClick={() => toggleSection("technicalSkills")}
+                aria-expanded={!!expandedSections["technicalSkills"]}
+                aria-controls="technical-skills-list"
+              >
+                {expandedSections["technicalSkills"] ? "See Less" : "See More"}
+              </button>
+
+              {/* Collapsible Section */}
+              {expandedSections["technicalSkills"] && (
+                <ul
+                  id="technical-skills-list"
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8"
+                >
+                  {aviationResume.technicalSkills.map((item, index) => (
+                    <li key={index} className="flex items-center text-gray-700">
+                      <span className="mr-2 text-blue-500">✔</span> {item}
+                    </li>
+                  ))}
+                </ul>
+              )}
 
               <h3 className="text-2xl font-bold mb-6 text-blue-800 border-b-2 border-blue-300 pb-2">
                 Employment Outline
@@ -511,11 +546,16 @@ function Resume() {
                     <button
                       className="px-4 py-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors"
                       onClick={() => toggleSection(index)}
+                      aria-expanded={!!expandedSections[index]}
+                      aria-controls={`aviation-exp-${index}`}
                     >
                       {expandedSections[index] ? "See Less" : "See More"}
                     </button>
                     {expandedSections[index] && (
-                      <div className="mt-4 animate-fade-in">
+                      <div
+                        id={`aviation-exp-${index}`}
+                        className="mt-4 animate-fade-in"
+                      >
                         <h5 className="font-semibold text-gray-800 mt-4">
                           Key Deliverables:
                         </h5>
@@ -588,67 +628,102 @@ function Resume() {
                 {itResume.summary}
               </p>
 
+              {/* Core Competencies Section */}
               <h3 className="text-2xl font-bold mb-6 text-blue-800 border-b-2 border-blue-300 pb-2">
                 Core Competencies
               </h3>
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                {itResume.competencies.map((item, index) => (
-                  <li key={index} className="flex items-center text-gray-700">
-                    <span className="mr-2 text-blue-500">✔</span> {item}
-                  </li>
-                ))}
-              </ul>
 
+              <button
+                className="px-4 py-2 mb-4 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors"
+                onClick={() => toggleSection("itCompetencies")}
+                aria-expanded={!!expandedSections["itCompetencies"]}
+                aria-controls="it-core-competencies"
+              >
+                {expandedSections["itCompetencies"] ? "See Less" : "See More"}
+              </button>
+
+              {expandedSections["itCompetencies"] && (
+                <ul
+                  id="it-core-competencies"
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8"
+                >
+                  {itResume.competencies.map((item, index) => (
+                    <li key={index} className="flex items-center text-gray-700">
+                      <span className="mr-2 text-blue-500">✔</span> {item}
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {/* Tech Stack Section */}
               <h3 className="text-2xl font-bold mb-6 text-blue-800 border-b-2 border-blue-300 pb-2">
                 Tech Stack
               </h3>
-              <div className="grid md:grid-cols-4 gap-6 mb-8">
-                <div>
-                  <h4 className="font-semibold text-gray-800">Frontend</h4>
-                  <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                    {itResume.techStack.frontend.map((skill, i) => (
-                      <li key={i}>{skill}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-800">Backend</h4>
-                  <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                    {itResume.techStack.backend.map((skill, i) => (
-                      <li key={i}>{skill}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-800">Database</h4>
-                  <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                    {itResume.techStack.database.map((skill, i) => (
-                      <li key={i}>{skill}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-800">Tools</h4>
-                  <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                    {itResume.techStack.tools.map((skill, i) => (
-                      <li key={i}>{skill}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              <div className="mb-8">
-                <h4 className="font-semibold text-gray-800">Others</h4>
-                <div className="flex flex-wrap gap-3 mt-2">
-                  {itResume.techStack.others.map((skill, i) => (
-                    <span
-                      key={i}
-                      className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm hover:bg-blue-200 transition-colors"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
+
+              <button
+                className="px-4 py-2 mb-4 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors"
+                onClick={() => toggleSection("itTechStack")}
+                aria-expanded={!!expandedSections["itTechStack"]}
+                aria-controls="it-tech-stack"
+              >
+                {expandedSections["itTechStack"] ? "See Less" : "See More"}
+              </button>
+
+              {expandedSections["itTechStack"] && (
+                <>
+                  <div
+                    id="it-tech-stack"
+                    className="grid md:grid-cols-4 gap-6 mb-8"
+                  >
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Frontend</h4>
+                      <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                        {itResume.techStack.frontend.map((skill, i) => (
+                          <li key={i}>{skill}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Backend</h4>
+                      <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                        {itResume.techStack.backend.map((skill, i) => (
+                          <li key={i}>{skill}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Database</h4>
+                      <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                        {itResume.techStack.database.map((skill, i) => (
+                          <li key={i}>{skill}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Tools</h4>
+                      <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                        {itResume.techStack.tools.map((skill, i) => (
+                          <li key={i}>{skill}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="mb-8">
+                    <h4 className="font-semibold text-gray-800">Others</h4>
+                    <div className="flex flex-wrap gap-3 mt-2">
+                      {itResume.techStack.others.map((skill, i) => (
+                        <span
+                          key={i}
+                          className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm hover:bg-blue-200 transition-colors"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              )}
 
               <h3 className="text-2xl font-bold mb-6 text-blue-800 border-b-2 border-blue-300 pb-2">
                 Professional Experience
@@ -667,11 +742,16 @@ function Resume() {
                     <button
                       className="px-4 py-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors"
                       onClick={() => toggleSection(index)}
+                      aria-expanded={!!expandedSections[index]}
+                      aria-controls={`it-exp-${index}`}
                     >
                       {expandedSections[index] ? "See Less" : "See More"}
                     </button>
                     {expandedSections[index] && (
-                      <div className="mt-4 animate-fade-in">
+                      <div
+                        id={`it-exp-${index}`}
+                        className="mt-4 animate-fade-in"
+                      >
                         <ul className="list-disc pl-6 space-y-2 text-gray-700">
                           {exp.achievements.map((item, i) => (
                             <li key={i}>{item}</li>

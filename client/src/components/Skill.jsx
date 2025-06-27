@@ -19,53 +19,6 @@ function Skills() {
   // Skills data with tooltips
   const skillsData = [
     {
-      title: "Technical Skills (Aviation)",
-      items: [
-        {
-          name: "SAP",
-          tooltip: "Enterprise resource planning for aviation operations",
-        },
-        { name: "Maintenix", tooltip: "MRO software for maintenance tracking" },
-        { name: "AMOS", tooltip: "Aviation maintenance management system" },
-        {
-          name: "OASES",
-          tooltip: "Open Aviation Strategic Engineering System",
-        },
-        {
-          name: "Aviation Systems",
-          tooltip: "Expertise in avionics and aircraft systems",
-        },
-        {
-          name: "FAA Regulations",
-          tooltip: "Compliance with FAA 14 CFR Part 43/91",
-        },
-        {
-          name: "Aircraft Maintenance",
-          tooltip: "Planning and execution of aircraft maintenance",
-        },
-        {
-          name: "Safety Compliance",
-          tooltip: "Ensuring adherence to safety standards",
-        },
-        {
-          name: "Technical Records",
-          tooltip: "Management of aircraft technical documentation",
-        },
-        {
-          name: "Continuing Airworthiness",
-          tooltip: "Maintaining airworthiness per EASA Part-M",
-        },
-        {
-          name: "Defect Rectification",
-          tooltip: "Rapid resolution of aircraft defects",
-        },
-        {
-          name: "Component Maintenance",
-          tooltip: "Maintenance of aircraft components",
-        },
-      ],
-    },
-    {
       title: "Technical Skills (Full-Stack)",
       items: [
         { name: "JavaScript", tooltip: "Core language for web development" },
@@ -144,6 +97,53 @@ function Skills() {
         {
           name: "Budget Forecasting",
           tooltip: "Planning and managing project budgets",
+        },
+      ],
+    },
+    {
+      title: "Technical Skills (Aviation)",
+      items: [
+        {
+          name: "SAP",
+          tooltip: "Enterprise resource planning for aviation operations",
+        },
+        { name: "Maintenix", tooltip: "MRO software for maintenance tracking" },
+        { name: "AMOS", tooltip: "Aviation maintenance management system" },
+        {
+          name: "OASES",
+          tooltip: "Open Aviation Strategic Engineering System",
+        },
+        {
+          name: "Aviation Systems",
+          tooltip: "Expertise in avionics and aircraft systems",
+        },
+        {
+          name: "FAA Regulations",
+          tooltip: "Compliance with FAA 14 CFR Part 43/91",
+        },
+        {
+          name: "Aircraft Maintenance",
+          tooltip: "Planning and execution of aircraft maintenance",
+        },
+        {
+          name: "Safety Compliance",
+          tooltip: "Ensuring adherence to safety standards",
+        },
+        {
+          name: "Technical Records",
+          tooltip: "Management of aircraft technical documentation",
+        },
+        {
+          name: "Continuing Airworthiness",
+          tooltip: "Maintaining airworthiness per EASA Part-M",
+        },
+        {
+          name: "Defect Rectification",
+          tooltip: "Rapid resolution of aircraft defects",
+        },
+        {
+          name: "Component Maintenance",
+          tooltip: "Maintenance of aircraft components",
         },
       ],
     },

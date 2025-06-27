@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+// import { baseURL } from "../Utility/Api"; // Adjust the import path as needed
 
-// const baseURL = "http://localhost:3000/api";
+
 
 function PasswordReset({ resetToken, setResetToken }) {
   const [newPassword, setNewPassword] = useState("");
@@ -25,10 +26,11 @@ function PasswordReset({ resetToken, setResetToken }) {
 
     try {
       console.log("Submitting reset request with token:", resetToken);
-      const response = await fetch(`/password-reset/${resetToken}`, {
+      const response = await fetch(`/api/password-reset/${resetToken}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ password: newPassword }),
+        credentials: "include", // Include cookies for session management
       });
 
       const data = await response.json();
