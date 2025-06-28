@@ -47,7 +47,7 @@ function Contact() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mb-4">
 {/*           <div className="text-center">
             <i className="fas fa-phone fa-3x text-blue-600 mb-2"></i>
-            <p className="font-semibold">+1 240-425-2343</p>
+            <p className="font-semibold"></p>
           </div> */}
           <div className="text-center">
             <i className="far fa-envelope fa-3x text-blue-600 mb-2"></i>
@@ -57,7 +57,7 @@ function Contact() {
           </div>
 {/*           <div className="text-center">
             <i className="fas fa-map-marker-alt fa-3x text-blue-600 mb-2"></i>
-            <p className="font-semibold">Maryland, USA</p>
+            <p className="font-semibold"></p>
           </div> */}
         </div>
 
