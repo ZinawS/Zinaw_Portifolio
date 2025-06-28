@@ -45,20 +45,20 @@ function Contact() {
 
         {/* Contact info */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mb-4">
-          <div className="text-center">
+{/*           <div className="text-center">
             <i className="fas fa-phone fa-3x text-blue-600 mb-2"></i>
             <p className="font-semibold">+1 240-425-2343</p>
-          </div>
+          </div> */}
           <div className="text-center">
             <i className="far fa-envelope fa-3x text-blue-600 mb-2"></i>
             <p className="font-semibold">
               <a href="mailto:zinshol@hotmail.com">zinshol@hotmail.com</a>
             </p>
           </div>
-          <div className="text-center">
+{/*           <div className="text-center">
             <i className="fas fa-map-marker-alt fa-3x text-blue-600 mb-2"></i>
             <p className="font-semibold">Maryland, USA</p>
-          </div>
+          </div> */}
         </div>
 
         {/* Contact form */}
