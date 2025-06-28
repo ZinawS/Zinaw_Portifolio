@@ -17,13 +17,11 @@ function Resume() {
   // Contact information
   const contactInfo = {
     name: "ZINAW SHIFERAW MEKONNEN",
-    phone: "+1 240-425-2343, +1 240-482-6848",
     email: "Zinshol@hotmail.com",
     linkedIn: "https://www.linkedin.com/in/zinaw-shiferaw-mekonnen-799a0934",
     website: "https://www.zesky.net",
     github: "https://github.com/ZinawS",
-    location: "Silver Spring, MD, USA",
-    whatsapp: "+1 240-425-2343",
+   
   };
 
   // IT resume data
@@ -87,7 +85,7 @@ function Resume() {
     experience: [
       {
         title: "Senior Full-Stack Developer & IT Consultant",
-        company: "Freelance + Aviation Consultant, Silver Spring, MD",
+        company: "Freelance + Aviation Consultant",
         period: "Oct 2024 – Present",
         achievements: [
           "Developed full-stack web applications using React, TypeScript, Node.js, Express, and PostgreSQL, deployed on AWS EC2 with Docker, improving development speed by 30% via ChatGPT/Copilot.",
